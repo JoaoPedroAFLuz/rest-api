@@ -1,9 +1,8 @@
 const express = require('express');
+const ProductController = require('./controllers/productController');
 
 const router = express.Router();
 
-router.get('/', (request, response) => {
-  response.send('Dentro do routes.js');
-});
+router.get('/', ProductController.index);
 
 module.exports = router;
