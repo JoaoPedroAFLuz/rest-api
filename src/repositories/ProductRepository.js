@@ -1,6 +1,6 @@
 const { v4 } = require('uuid');
 
-const products = [
+let products = [
   {
     id: v4(),
     nome: 'Geladeira',
@@ -34,9 +34,23 @@ class ProductRepository {
       preco,
     };
 
-    products.push(newProduct)
+    products.push(newProduct);
 
     return newProduct;
+  }
+
+  update(id, nome, preco) {
+    const updatedProduct = {
+      id,
+      nome,
+      preco,
+    };
+
+    products = products.map((product) =>
+      product.id === id ? updatedProduct : product
+    );
+
+    return updatedProduct;
   }
 }
 
