@@ -50,6 +50,22 @@ class ProductController {
 
     return response.json(updatedProduct);
   }
+
+  delete(request, response) {
+    const { id } = request.params;
+
+    const hasContact = ProductRepository.findById(id);
+
+    if (!hasContact) {
+      return response
+        .status(404)
+        .json({ erro: `Produto não encontrado com o id:${id}` });
+    }
+
+    ProductRepository.delete(id);
+
+    return response.sendStatus(204);
+  }
 }
 
 module.exports = new ProductController();

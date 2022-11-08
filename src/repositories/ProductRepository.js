@@ -52,6 +52,10 @@ class ProductRepository {
 
     return updatedProduct;
   }
+
+  delete(id) {
+    products = products.filter((product) => product.id !== id);
+  }
 }
 
 module.exports = new ProductRepository();
