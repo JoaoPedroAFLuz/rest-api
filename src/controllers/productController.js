@@ -1,6 +1,10 @@
+const ProductRepository = require('../repositories/productRepository')
+
 class ProductController {
   index(request, response) {
-    response.send('Dentro do ProductController');
+    const products = ProductRepository.findAll();
+
+    response.json(products);
   }
 }
 
